@@ -1,0 +1,10 @@
+----------------------- Github Actions -----------------
+
+Script Instruction in YAML :- 
+- Whenever there is a PUSH.
+- SSH into my server
+- CD /home/app
+- git pull
+- docker compose up -d
+
+^ This script will run on the github hosted runners.
