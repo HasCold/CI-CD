@@ -1,0 +1,26 @@
+name: Deploy node.js application to aws ec2 instance
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with: 
+          host: ${{ secrets.CICD_SSH_HOST }}
+          username: ${{ secrets.CICD_USERNAME_HOST }}
+          key: ${{ secrets.SSH_KEY }}
+          # now below the script will run into the server
+          script: |
+            cd /home/ubuntu/CI-CD
+            git pull
+            docker compose up -d --build

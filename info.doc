@@ -8,3 +8,20 @@ Script Instruction in YAML :-
 - docker compose up -d
 
 ^ This script will run on the github hosted runners.
+
+---------------------------------------------------
+
+RUN THE SSH Key :- 
+- ssh-keygen -t ed25519 -C "your_email@example.com" -->> Best & modern option (Ed25519)
+
+- ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -->> Alternative (older systems)
+
+--------------------------------------------------------
+
+- After generating the public and private key save the public key on EC2 instance -->> cd .ssh folder -->> paste the public key
+
+- And save the private key as a secrets in setting in github repo.
+
+- and after that ideally we should remove both keys before pushing the changes to github. 
+
+---------------------------------------------------------
